@@ -1,0 +1,84 @@
+---
+import Layout from '@/layouts/Layout.astro'
+import PageHeader from '@/components/sections/PageHeader.astro'
+import ReservationForm from '@/components/sections/ReservationForm'
+import { restaurantInfo, businessHours } from '@/data/restaurant'
+
+const pageTitle = 'Reservar Mesa'
+const pageDescription = 'Reserva tu mesa en Sabores del Valle de forma rápida y sencilla. Disfruta de la mejor comida típica hondureña en un ambiente familiar.'
+const pageKeywords = 'reservar mesa, reservas restaurante, reservar baleadas, cena familiar, almuerzo ejecutivo, Tegucigalpa'
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'ReservationPage',
+  name: 'Reservaciones en Sabores del Valle',
+  description: pageDescription,
+  publisher: {
+    '@type': 'Restaurant',
+    name: 'Sabores del Valle',
+    telephone: restaurantInfo.phone
+  }
+}
+---
+
+<Layout title={pageTitle} description={pageDescription} keywords={pageKeywords} schema={schema}>
+  <PageHeader 
+    title="Reservaciones" 
+    subtitle="Asegura tu mesa y vive una experiencia gastronómica inolvidable"
+    backgroundImage="/images/contact-us-01.webp"
+  />
+  
+  <div class="py-16 sm:py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+      
+      {/* Information Sidebar */}
+      <div class="lg:col-span-4 space-y-8 bg-muted/40 border border-border/60 rounded-2xl p-6 sm:p-8">
+        <div class="space-y-3">
+          <h3 class="text-xl font-bold font-serif text-foreground">Información Importante</h3>
+          <p class="text-sm text-muted-foreground leading-relaxed">
+            Para garantizar el mejor servicio, por favor considera los siguientes puntos al realizar tu reserva:
+          </p>
+        </div>
+        
+        <ul class="space-y-4 text-sm text-muted-foreground">
+          <li class="flex gap-3">
+            <span class="text-primary font-bold">•</span>
+            <span>Las reservaciones deben hacerse con al menos <strong>2 horas de anticipación</strong>.</span>
+          </li>
+          <li class="flex gap-3">
+            <span class="text-primary font-bold">•</span>
+            <span>Mantenemos tu mesa reservada por un máximo de <strong>15 minutos de tolerancia</strong> de la hora acordada.</span>
+          </li>
+          <li class="flex gap-3">
+            <span class="text-primary font-bold">•</span>
+            <span>Para grupos de más de 10 personas o eventos privados, por favor contáctanos directamente a nuestro teléfono de atención o correo electrónico.</span>
+          </li>
+        </ul>
+
+        <div class="border-t border-border/80 pt-6 space-y-4">
+          <h4 class="font-bold text-foreground font-serif">Horarios de Reservación</h4>
+          <div class="space-y-2 text-xs text-muted-foreground">
+            {businessHours.map((item) => (
+              <div class="flex justify-between">
+                <span>{item.day}:</span>
+                <span class="font-medium">{item.isOpen ? item.hours : 'Cerrado'}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div class="border-t border-border/80 pt-6 space-y-3">
+          <h4 class="font-bold text-foreground font-serif">¿Necesitas ayuda inmediata?</h4>
+          <p class="text-sm text-muted-foreground">Llámanos o escríbenos directamente:</p>
+          <p class="text-sm font-semibold text-primary">{restaurantInfo.phone} / {restaurantInfo.whatsapp}</p>
+        </div>
+      </div>
+      
+      {/* Reservation Form Component */}
+      <div class="lg:col-span-8">
+        <ReservationForm client:load />
+      </div>
+      
+    </div>
+  </div>
+</Layout>

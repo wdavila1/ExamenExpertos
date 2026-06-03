@@ -1,0 +1,40 @@
+---
+import Layout from '@/layouts/Layout.astro'
+import PageHeader from '@/components/sections/PageHeader.astro'
+import MenuCategories from '@/components/sections/MenuCategories'
+import { restaurantInfo } from '@/data/restaurant'
+
+const pageTitle = 'Menú Catracho'
+const pageDescription = 'Explora nuestra variedad de platillos típicos hondureños: entradas crujientes, platos fuertes generosos, postres tradicionales y bebidas refrescantes.'
+const pageKeywords = 'menu, platillos hondureños, baleadas, pollo chuco, yuca con chicharron, horchata, torrejas, restaurante honduras'
+
+// Structured data for Menu
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'Menu',
+  name: `Menú de ${restaurantInfo.name}`,
+  description: pageDescription,
+  provider: {
+    '@type': 'Restaurant',
+    name: restaurantInfo.name,
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: 'Boulevard Morazán',
+      addressLocality: 'Tegucigalpa',
+      addressCountry: 'HN'
+    }
+  }
+}
+---
+
+<Layout title={pageTitle} description={pageDescription} keywords={pageKeywords} schema={schema}>
+  <PageHeader 
+    title="Nuestro Menú" 
+    subtitle="El auténtico sazón catracho servido en tu mesa"
+    backgroundImage="/images/new-items/new-items-01.webp"
+  />
+  
+  <div class="py-16 sm:py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <MenuCategories client:load />
+  </div>
+</Layout>

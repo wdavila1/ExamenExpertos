@@ -1,0 +1,105 @@
+---
+import Layout from '@/layouts/Layout.astro'
+import PageHeader from '@/components/sections/PageHeader.astro'
+import ContactForm from '@/components/sections/ContactForm'
+import { restaurantInfo } from '@/data/restaurant'
+
+const pageTitle = 'Contacto'
+const pageDescription = '¿Tienes preguntas o sugerencias? Ponte en contacto con el equipo de Sabores del Valle por teléfono, correo, redes sociales o mediante nuestro formulario.'
+const pageKeywords = 'contacto, ubicacion, direccion, telefono, correo, mapa, sabores del valle, Tegucigalpa, Honduras'
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'ContactPage',
+  name: 'Contacto — Sabores del Valle',
+  description: pageDescription,
+  publisher: {
+    '@type': 'Restaurant',
+    name: 'Sabores del Valle',
+    telephone: restaurantInfo.phone,
+    email: restaurantInfo.email
+  }
+}
+---
+
+<Layout title={pageTitle} description={pageDescription} keywords={pageKeywords} schema={schema}>
+  <PageHeader
+    title="Contáctanos"
+    subtitle="Estamos aquí para escucharte y servirte de la mejor manera"
+    backgroundImage="/images/contact-us-01.webp"
+  />
+
+  <div class="py-16 sm:py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+
+      {/* Contact Info Column */}
+      <div class="lg:col-span-5 space-y-8">
+        <div class="space-y-4">
+          <h3 class="text-3xl font-bold font-serif text-foreground tracking-tight">Ponte en Contacto</h3>
+          <p class="text-muted-foreground text-base leading-relaxed">
+            Ya sea que desees reservar para un evento de grupo, tengas alguna duda sobre nuestro menú o quieras enviar tu CV para unirte a nuestro equipo, estamos atentos.
+          </p>
+        </div>
+
+        <div class="space-y-6">
+          {/* Address */}
+          <div class="flex items-start gap-4">
+            <div class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary border border-primary/20">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+            </div>
+            <div>
+              <p class="font-bold text-foreground">Nuestra Ubicación</p>
+              <p class="text-sm text-muted-foreground leading-relaxed">{restaurantInfo.address}</p>
+            </div>
+          </div>
+
+          {/* Phone */}
+          <div class="flex items-start gap-4">
+            <div class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary border border-primary/20">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+            </div>
+            <div>
+              <p class="font-bold text-foreground">Teléfono Fijo & Celular</p>
+              <p class="text-sm text-muted-foreground leading-relaxed">{restaurantInfo.phone} / {restaurantInfo.whatsapp}</p>
+            </div>
+          </div>
+
+          {/* Email */}
+          <div class="flex items-start gap-4">
+            <div class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary border border-primary/20">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+            </div>
+            <div>
+              <p class="font-bold text-foreground">Correo Electrónico</p>
+              <p class="text-sm text-muted-foreground leading-relaxed">{restaurantInfo.email}</p>
+            </div>
+          </div>
+        </div>
+
+        {/* Google Map Box placeholder */}
+        <div class="space-y-4 pt-6 border-t border-border">
+          <h4 class="font-bold text-foreground font-serif">Encuéntranos en el Mapa</h4>
+
+          <div class="relative overflow-hidden rounded-2xl border border-border bg-muted aspect-video flex flex-col items-center justify-center text-center p-6 space-y-3">
+            {/* GOOGLE MAPS IFRAME SPACE - START */}
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d59259.41389254356!2d-87.26598714912824!3d14.077020500000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8f6fa356b2d23b77%3A0x3c2d011bb17318a1!2sPupusas%20Camino%20del%20Valle%20%E2%80%A2%20Salida%20Valle%20de%20%C3%81ngeles!5e1!3m2!1ses!2shn!4v1780247862276!5m2!1ses!2shn"
+              width="100%"
+              height="100%"
+              style="border:0;"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"></iframe>
+            {/* GOOGLE MAPS IFRAME SPACE - END */}
+          </div>
+        </div>
+      </div>
+
+      {/* Contact Form Column */}
+      <div class="lg:col-span-7">
+        <ContactForm client:load />
+      </div>
+
+    </div>
+  </div>
+</Layout>

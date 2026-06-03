@@ -1,0 +1,49 @@
+---
+import Layout from '@/layouts/Layout.astro'
+import HeroSection from '@/components/sections/HeroSection.astro'
+import FeaturedDishes from '@/components/sections/FeaturedDishes'
+import BusinessHours from '@/components/sections/BusinessHours.astro'
+import Testimonials from '@/components/blocks/testimonials-section/testimonials-section'
+
+import { featuredDishes } from '@/data/menu'
+import { testimonials } from '@/data/testimonials'
+
+// Page-specific SEO configuration
+const pageTitle = 'Inicio'
+const pageDescription =
+  'Bienvenidos a Sabores del Valle, el auténtico rincón gastronómico hondureño en Tegucigalpa. Disfruta de deliciosas baleadas, pollo chuco, sopa de caracol y más.'
+const pageKeywords = 'restaurante hondureño, comida típica catracha, baleadas, pollo chuco, Tegucigalpa, Sabores del Valle'
+
+// Structured data for Restaurant
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'Restaurant',
+  name: 'Sabores del Valle',
+  description: pageDescription,
+  image: 'https://saboresdelvalle.hn/images/about-us.webp',
+  telephone: '+504 2222-3333',
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: 'Boulevard Morazán',
+    addressLocality: 'Tegucigalpa',
+    addressRegion: 'Francisco Morazán',
+    postalCode: '11101',
+    addressCountry: 'HN'
+  },
+  openingHoursSpecification: [
+    {
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
+      opens: '08:00',
+      closes: '21:00'
+    }
+  ]
+}
+---
+
+<Layout title={pageTitle} description={pageDescription} keywords={pageKeywords} schema={schema}>
+  <HeroSection />
+  <FeaturedDishes dishes={featuredDishes} client:load />
+  <BusinessHours />
+  <Testimonials testimonials={testimonials} client:load />
+</Layout>
