@@ -1,0 +1,42 @@
+---
+import Layout from '@/layouts/Layout.astro'
+import PageHeader from '@/components/sections/PageHeader.astro'
+import MenuCategories from '@/components/sections/MenuCategories'
+import { restaurantInfo } from '@/data/restaurant'
+
+const pageTitle = 'Catálogo de Café Premium'
+const pageDescription =
+  'Descubre nuestra exclusiva selección de 15 cafés premium de Copán con diferentes tuestes, procesos y perfiles de sabor. Desde espresso intenso hasta cafés suaves con notas florales.'
+const pageKeywords =
+  'café premium, copán, espresso, tueste, café de especialidad, americano, cappuccino, flat white, café artesanal'
+
+// Structured data for Menu
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'Menu',
+  name: `Catálogo de Café Premium de ${restaurantInfo.name}`,
+  description: pageDescription,
+  provider: {
+    '@type': 'Restaurant',
+    name: restaurantInfo.name,
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: 'Boulevard Morazán',
+      addressLocality: 'Tegucigalpa',
+      addressCountry: 'HN'
+    }
+  }
+}
+---
+
+<Layout title={pageTitle} description={pageDescription} keywords={pageKeywords} schema={schema}>
+  <PageHeader
+    title='Catálogo de Café Premium'
+    subtitle='Conoce nuestras 15 selecciones de café de Copán con diferentes tuestes y procesos'
+    backgroundImage='/images/new-items/new-items-01.webp'
+  />
+
+  <div class='mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-24 lg:px-8'>
+    <MenuCategories client:load />
+  </div>
+</Layout>

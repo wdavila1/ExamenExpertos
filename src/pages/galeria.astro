@@ -4,29 +4,31 @@ import PageHeader from '@/components/sections/PageHeader.astro'
 import GalleryGrid from '@/components/sections/GalleryGrid'
 
 const pageTitle = 'Galería de Fotos'
-const pageDescription = 'Explora nuestra galería visual: platillos típicos hondureños, las instalaciones de nuestro acogedor restaurante y las celebraciones especiales de nuestros clientes.'
-const pageKeywords = 'galeria, fotos restaurante, fotos platos típicos, baleadas de noche, ambiente hondureño, fotos de comida'
+const pageDescription =
+  'Explora nuestra galería visual: platillos típicos hondureños, las instalaciones de nuestro acogedor restaurante y las celebraciones especiales de nuestros clientes.'
+const pageKeywords =
+  'galeria, fotos restaurante, fotos platos típicos, baleadas de noche, ambiente hondureño, fotos de comida'
 
 const schema = {
   '@context': 'https://schema.org',
   '@type': 'ImageGallery',
-  name: 'Galería de Fotos — Sabores del Valle',
+  name: 'Galería de Fotos — Café Premium Copán',
   description: pageDescription,
   publisher: {
     '@type': 'Restaurant',
-    name: 'Sabores del Valle'
+    name: 'Café Premium Copán'
   }
 }
 ---
 
 <Layout title={pageTitle} description={pageDescription} keywords={pageKeywords} schema={schema}>
-  <PageHeader 
-    title="Nuestra Galería" 
-    subtitle="Un recorrido visual por nuestros platillos, nuestro local y momentos memorables"
-    backgroundImage="/images/offers/offers-image-02.webp"
+  <PageHeader
+    title='Nuestra Galería'
+    subtitle='Un recorrido visual por nuestros platillos, nuestro local y momentos memorables'
+    backgroundImage='/images/offers/offers-image-02.webp'
   />
-  
-  <div class="py-16 sm:py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+  <div class='mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-24 lg:px-8'>
     <GalleryGrid client:load />
   </div>
 </Layout>

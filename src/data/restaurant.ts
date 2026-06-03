@@ -1,20 +1,20 @@
-// Información general del restaurante Sabores del Valle
+// Información general del restaurante Café Premium Copán
 
 export const restaurantInfo = {
-  name: 'Sabores del Valle',
-  slogan: 'El auténtico sabor hondureño',
+  name: 'Café Premium Copán',
+  slogan: 'El cafefé que despierta tus sentidos, el sabor que conquista tu corazón.',
   description:
     'Restaurante de comida típica hondureña donde cada platillo cuenta la historia de nuestra tierra. Ingredientes frescos, recetas tradicionales y un ambiente cálido que te hará sentir como en casa.',
-  phone: '+504 2222-3333',
+  phone: '+504 2662-3333',
   whatsapp: '+504 9999-8888',
   email: 'info@saboresdelvalle.hn',
-  address: 'Boulevard Morazán, Tegucigalpa, Honduras',
+  address: 'Barrio el Centro, Santa Rosa de Copan, Honduras',
   mapPlaceholder: 'INSERTAR_ENLACE_GOOGLE_MAPS_AQUI',
   socialMedia: {
-    facebook: 'https://facebook.com/saboresdelvalle',
-    instagram: 'https://instagram.com/saboresdelvalle',
-    twitter: 'https://twitter.com/saboresdelvalle',
-    youtube: 'https://youtube.com/@saboresdelvalle'
+    facebook: 'https://facebook.com/cafecopan',
+    instagram: 'https://instagram.com/cafecopan',
+    twitter: 'https://twitter.com/cafecopan',
+    youtube: 'https://youtube.com/@cafecopan'
   }
 }
 
@@ -32,7 +32,7 @@ export const aboutContent = {
   history: {
     title: 'Nuestra Historia',
     content:
-      'Sabores del Valle nació en 2010 como un pequeño comedor familiar en el corazón de Tegucigalpa. Fundado por Don José Avila, quien heredó las recetas de su abuela, nuestro restaurante ha crecido hasta convertirse en un referente de la gastronomía hondureña. Cada platillo que servimos lleva consigo generaciones de tradición culinaria, preparado con ingredientes frescos de los valles y montañas de Honduras.'
+      'Café Premium Copán nació en 2010 como un pequeño comedor familiar en el corazón de Tegucigalpa. Fundado por Don José Avila, quien heredó las recetas de su abuela, nuestro restaurante ha crecido hasta convertirse en un referente de la gastronomía hondureña. Cada platillo que servimos lleva consigo generaciones de tradición culinaria, preparado con ingredientes frescos de los valles y montañas de Honduras.'
   },
   mission: {
     title: 'Misión',

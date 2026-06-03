@@ -1,4 +1,4 @@
-// Galería de imágenes — Sabores del Valle
+// Galería de imágenes — Café Premium Copán
 
 export type GalleryImage = {
   src: string
@@ -54,7 +54,7 @@ export const galleryImages: GalleryImage[] = [
   // Local
   {
     src: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTqJ8OMenACNF6e0xPfOWnmBUEKAS8yo-YSXQ&s',
-    alt: 'Interior del restaurante Sabores del Valle',
+    alt: 'Interior del restaurante Café Premium Copán',
     category: 'local'
   },
   {

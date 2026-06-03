@@ -10,88 +10,102 @@ interface Props {
 }
 
 const {
-  title = "El auténtico sabor de la cocina hondureña",
-  subtitle = "Sabores del Valle",
-  description = "Disfruta de las mejores baleadas con todo, sabroso pollo chuco, sopa de caracol tradicional y las carnes asadas con el sazón único de nuestra tierra.",
-  image = "/images/banner.avif"
+  title = 'El auténtico sabor de la cocina hondureña',
+  subtitle = 'Café Premium Copán',
+  description = 'Disfruta del auténtico sabor de Honduras en cada taza. Nuestro café premium, ofrece notas equilibradas y un aroma envolvente.',
+  image = 'https://png.pngtree.com/thumb_back/fh260/background/20230411/pngtree-coffee-beans-coffee-plant-background-vintage-poster-image_2267692.jpg'
 } = Astro.props
 ---
 
-<section id="hero" class="relative min-h-[90vh] flex items-center justify-center overflow-hidden bg-zinc-950 text-white">
+<section
+  id='hero'
+  class='relative flex min-h-[90vh] items-center justify-center overflow-hidden bg-zinc-950 text-white'
+>
   {/* Background image overlay */}
-  <div class="absolute inset-0 z-0">
+  <div class='absolute inset-0 z-0'>
     <img
       src={image}
-      alt="Sabores del Valle Restaurante"
-      class="h-full w-full object-cover object-center opacity-40 select-none scale-105 animate-fade-in"
-      style="animation-duration: 2s;"
+      alt='Café Premium Copán Restaurante'
+      class='animate-fade-in h-full w-full scale-105 object-cover object-center opacity-40 select-none'
+      style='animation-duration: 2s;'
     />
-    <div class="absolute inset-0 bg-gradient-to-r from-zinc-950 via-zinc-950/80 to-transparent"></div>
-    <div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent"></div>
+    <div class='absolute inset-0 bg-gradient-to-r from-zinc-950 via-zinc-950/80 to-transparent'></div>
+    <div class='from-background absolute inset-0 bg-gradient-to-t via-transparent to-transparent'></div>
   </div>
 
-  <div class="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20 lg:py-32 w-full">
-    <div class="max-w-3xl flex flex-col gap-6 items-start">
-
+  <div class='relative z-10 mx-auto w-full max-w-7xl px-4 py-20 sm:px-6 lg:px-8 lg:py-32'>
+    <div class='flex max-w-3xl flex-col items-start gap-6'>
       {/* Small Badge */}
-      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-primary/30 bg-primary/10 text-primary-foreground text-sm font-medium backdrop-blur-md animate-slide-in">
-        <span class="flex h-2 w-2 rounded-full bg-primary animate-pulse"></span>
-        ¡El rincón más catracho de Tegus!
+      <div
+        class='border-primary/30 bg-primary/10 text-primary-foreground animate-slide-in inline-flex items-center gap-2 rounded-full border px-3 py-1 text-sm font-medium backdrop-blur-md'
+      >
+        <span class='bg-primary flex h-2 w-2 animate-pulse rounded-full'></span>
+        Lunes-Viernes 8am - 6 pm
       </div>
 
       {/* Main Title */}
-      <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-white leading-none">
-        <span class="font-kaushan-script text-primary text-3xl sm:text-4xl md:text-5xl block mb-2 font-normal">
+      <h1 class='text-4xl leading-none font-bold tracking-tight text-white sm:text-5xl md:text-6xl lg:text-7xl'>
+        <span class='font-kaushan-script text-primary mb-2 block text-3xl font-normal sm:text-4xl md:text-5xl'>
           {subtitle}
         </span>
         {title}
       </h1>
 
       {/* Description */}
-      <p class="text-lg sm:text-xl text-zinc-300 max-w-xl text-balance">
+      <p class='max-w-xl text-lg text-balance text-zinc-300 sm:text-xl'>
         {description}
       </p>
 
       {/* CTA Buttons */}
-      <div class="mt-4 flex flex-wrap gap-4 items-center w-full sm:w-auto">
+      <div class='mt-4 flex w-full flex-wrap items-center gap-4 sm:w-auto'>
         <a
-          href="/menu"
+          href='/catalogo'
           class={cn(
             buttonVariants({ variant: 'default', size: 'lg' }),
-            "w-full sm:w-auto rounded-full text-base font-semibold group relative overflow-hidden shadow-lg shadow-primary/20 transition-all duration-300 hover:shadow-primary/35 flex items-center justify-center"
+            'w-full sm:w-auto rounded-full text-base font-semibold group relative overflow-hidden shadow-lg shadow-primary/20 transition-all duration-300 hover:shadow-primary/35 flex items-center justify-center'
           )}
         >
-          Ver el Menú
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-2 h-4 w-4 transition-transform duration-200 group-hover:translate-x-1"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          Ver el Catálogo
+          <svg
+            xmlns='http://www.w3.org/2000/svg'
+            width='20'
+            height='20'
+            viewBox='0 0 24 24'
+            fill='none'
+            stroke='currentColor'
+            stroke-width='2'
+            stroke-linecap='round'
+            stroke-linejoin='round'
+            class='ml-2 h-4 w-4 transition-transform duration-200 group-hover:translate-x-1'
+            ><line x1='5' y1='12' x2='19' y2='12'></line><polyline points='12 5 19 12 12 19'></polyline></svg
+          >
         </a>
         <a
-          href="/reservaciones"
+          href='/suscripcion'
           class={cn(
             buttonVariants({ variant: 'outline', size: 'lg' }),
-            "w-full sm:w-auto rounded-full text-base font-semibold border-white/20 hover:bg-white/10 text-white transition-all duration-200 flex items-center justify-center"
+            'w-full sm:w-auto rounded-full text-base font-semibold border-white/20 hover:bg-white/10 text-white transition-all duration-200 flex items-center justify-center'
           )}
         >
-          Reservar una Mesa
+          Cotizar pedido por Whatsapp
         </a>
       </div>
 
       {/* Stats micro-section */}
-      <div class="mt-12 grid grid-cols-3 gap-8 border-t border-white/10 pt-8 w-full max-w-lg">
+      <div class='mt-12 grid w-full max-w-lg grid-cols-3 gap-8 border-t border-white/10 pt-8'>
         <div>
-          <p class="text-3xl font-bold text-primary font-serif">100%</p>
-          <p class="text-sm text-zinc-400">Ingredientes Locales</p>
+          <p class='text-primary font-serif text-3xl font-bold'>100%</p>
+          <p class='text-sm text-zinc-400'>Ingredientes Locales</p>
         </div>
         <div>
-          <p class="text-3xl font-bold text-primary font-serif">15+</p>
-          <p class="text-sm text-zinc-400">Años de Sazón</p>
+          <p class='text-primary font-serif text-3xl font-bold'>15+</p>
+          <p class='text-sm text-zinc-400'>Años de tradición</p>
         </div>
         <div>
-          <p class="text-3xl font-bold text-primary font-serif">Copán</p>
-          <p class="text-sm text-zinc-400">Café de Altura</p>
+          <p class='text-primary font-serif text-3xl font-bold'>Copán</p>
+          <p class='text-sm text-zinc-400'>Café de Altura</p>
         </div>
       </div>
-
     </div>
   </div>
 </section>
-

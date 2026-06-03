@@ -30,17 +30,20 @@ const TestimonialsComponent = ({ testimonials }: TestimonialsComponentProps) => 
       >
         {/* Left Content */}
         <div className='space-y-4 sm:w-1/2 lg:w-1/3'>
-          <Badge variant='outline' className='text-sm font-medium border-primary/30 text-primary bg-primary/5 px-3 py-1 rounded-full'>
+          <Badge
+            variant='outline'
+            className='border-primary/30 text-primary bg-primary/5 rounded-full px-3 py-1 text-sm font-medium'
+          >
             Testimonios
           </Badge>
 
-          <h2 className='text-3xl font-bold font-serif md:text-4xl text-foreground tracking-tight'>
+          <h2 className='text-foreground font-serif text-3xl font-bold tracking-tight md:text-4xl'>
             ¿Qué Dicen <br />
             Nuestros Clientes?
           </h2>
 
           <p className='text-muted-foreground text-lg leading-relaxed'>
-            Esto es lo que opinan quienes nos visitan sobre su experiencia gastronómica en Sabores del Valle.
+            Esto es lo que opinan quienes nos visitan sobre su experiencia gastronómica en Café Premium Copán.
           </p>
 
           <div className='flex items-center gap-4'>
@@ -60,7 +63,7 @@ const TestimonialsComponent = ({ testimonials }: TestimonialsComponentProps) => 
           <CarouselContent className='sm:-ml-6'>
             {testimonials.map((testimonial, index) => (
               <CarouselItem key={index} className='sm:pl-6 lg:basis-1/2'>
-                <Card className='hover:border-primary h-full rounded-2xl border border-border/80 shadow-xs hover:shadow-md transition-all duration-300'>
+                <Card className='hover:border-primary border-border/80 h-full rounded-2xl border shadow-xs transition-all duration-300 hover:shadow-md'>
                   <CardContent className='space-y-5'>
                     <div className='flex items-center gap-3'>
                       <Avatar className='size-10 rounded-full'>

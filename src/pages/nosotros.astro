@@ -4,26 +4,28 @@ import PageHeader from '@/components/sections/PageHeader.astro'
 import AboutRestaurant from '@/components/sections/AboutRestaurant.astro'
 
 const pageTitle = 'Nuestra Historia'
-const pageDescription = 'Conoce el origen, misión, visión y los valores de Sabores del Valle, así como al talentoso equipo que prepara el sabor tradicional hondureño.'
-const pageKeywords = 'historia, nosotros, mision, vision, chef, equipo, sabores del valle, restaurante lenca, doña maria elena'
+const pageDescription =
+  'Conoce el origen, misión, visión y los valores de Café Premium Copán, así como al talentoso equipo que prepara el sabor tradicional hondureño.'
+const pageKeywords =
+  'historia, nosotros, mision, vision, chef, equipo, Café Premium Copán, restaurante lenca, doña maria elena'
 
 const schema = {
   '@context': 'https://schema.org',
   '@type': 'AboutPage',
-  name: 'Sobre Nosotros — Sabores del Valle',
+  name: 'Sobre Nosotros — Café Premium Copán',
   description: pageDescription,
   publisher: {
     '@type': 'Restaurant',
-    name: 'Sabores del Valle'
+    name: 'Café Premium Copán'
   }
 }
 ---
 
 <Layout title={pageTitle} description={pageDescription} keywords={pageKeywords} schema={schema}>
   <PageHeader
-    title="Sobre Nosotros"
-    subtitle="Generaciones de tradición culinaria lenca y catracha"
-    backgroundImage="/images/about-us.webp"
+    title='Sobre Nosotros'
+    subtitle='Generaciones de tradición culinaria lenca y catracha'
+    backgroundImage='/images/about-us.webp'
   />
 
   <AboutRestaurant />

@@ -1,4 +1,4 @@
-// Testimonios de clientes — Sabores del Valle
+// Testimonios de clientes — Café Premium Copán
 
 export type TestimonialItem = {
   name: string
@@ -13,7 +13,7 @@ export const testimonials: TestimonialItem[] = [
     avatar: '/images/hero-section/avatar-01.webp',
     rating: 5,
     content:
-      'Las baleadas de Sabores del Valle son las mejores que he probado en Tegus. El sabor es auténtico y los ingredientes son siempre frescos. ¡Mi familia y yo venimos cada fin de semana!'
+      'Las baleadas de Café Premium Copán son las mejores que he probado en Tegus. El sabor es auténtico y los ingredientes son siempre frescos. ¡Mi familia y yo venimos cada fin de semana!'
   },
   {
     name: 'María Fernanda López',
