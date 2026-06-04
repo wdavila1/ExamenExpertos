@@ -10,7 +10,7 @@ interface Props {
 }
 
 const {
-  title = 'El auténtico sabor de la cocina hondureña',
+  title = 'Tradición en cada grano',
   subtitle = 'Café Premium Copán',
   description = 'Disfruta del auténtico sabor de Honduras en cada taza. Nuestro café premium, ofrece notas equilibradas y un aroma envolvente.',
   image = 'https://png.pngtree.com/thumb_back/fh260/background/20230411/pngtree-coffee-beans-coffee-plant-background-vintage-poster-image_2267692.jpg'
@@ -34,76 +34,88 @@ const {
   </div>
 
   <div class='relative z-10 mx-auto w-full max-w-7xl px-4 py-20 sm:px-6 lg:px-8 lg:py-32'>
-    <div class='flex max-w-3xl flex-col items-start gap-6'>
-      {/* Small Badge */}
-      <div
-        class='border-primary/30 bg-primary/10 text-primary-foreground animate-slide-in inline-flex items-center gap-2 rounded-full border px-3 py-1 text-sm font-medium backdrop-blur-md'
-      >
-        <span class='bg-primary flex h-2 w-2 animate-pulse rounded-full'></span>
-        Lunes-Viernes 8am - 6 pm
-      </div>
-
-      {/* Main Title */}
-      <h1 class='text-4xl leading-none font-bold tracking-tight text-white sm:text-5xl md:text-6xl lg:text-7xl'>
-        <span class='font-kaushan-script text-primary mb-2 block text-3xl font-normal sm:text-4xl md:text-5xl'>
-          {subtitle}
-        </span>
-        {title}
-      </h1>
-
-      {/* Description */}
-      <p class='max-w-xl text-lg text-balance text-zinc-300 sm:text-xl'>
-        {description}
-      </p>
-
-      {/* CTA Buttons */}
-      <div class='mt-4 flex w-full flex-wrap items-center gap-4 sm:w-auto'>
-        <a
-          href='/catalogo'
-          class={cn(
-            buttonVariants({ variant: 'default', size: 'lg' }),
-            'w-full sm:w-auto rounded-full text-base font-semibold group relative overflow-hidden shadow-lg shadow-primary/20 transition-all duration-300 hover:shadow-primary/35 flex items-center justify-center'
-          )}
+    <div class='grid grid-cols-1 items-center gap-12 lg:grid-cols-2'>
+      {/* Left Column: Text Content */}
+      <div class='flex max-w-3xl flex-col items-start gap-6'>
+        {/* Small Badge */}
+        <div
+          class='border-primary/30 bg-primary/10 text-primary-foreground animate-slide-in inline-flex items-center gap-2 rounded-full border px-3 py-1 text-sm font-medium backdrop-blur-md'
         >
-          Ver el Catálogo
-          <svg
-            xmlns='http://www.w3.org/2000/svg'
-            width='20'
-            height='20'
-            viewBox='0 0 24 24'
-            fill='none'
-            stroke='currentColor'
-            stroke-width='2'
-            stroke-linecap='round'
-            stroke-linejoin='round'
-            class='ml-2 h-4 w-4 transition-transform duration-200 group-hover:translate-x-1'
-            ><line x1='5' y1='12' x2='19' y2='12'></line><polyline points='12 5 19 12 12 19'></polyline></svg
+          <span class='bg-primary flex h-2 w-2 animate-pulse rounded-full'></span>
+          Lunes-Viernes | 8AM - 6PM
+        </div>
+
+        {/* Main Title */}
+        <h1 class='text-4xl leading-none font-bold tracking-tight text-white sm:text-5xl md:text-6xl lg:text-7xl'>
+          <span class='font-kaushan-script text-primary mb-2 block text-3xl font-normal sm:text-4xl md:text-5xl'>
+            {subtitle}
+          </span>
+          {title}
+        </h1>
+
+        {/* Description */}
+        <p class='max-w-xl text-lg text-balance text-zinc-300 sm:text-xl'>
+          {description}
+        </p>
+
+        {/* CTA Buttons */}
+        <div class='mt-4 flex w-full flex-wrap items-center gap-4 sm:w-auto'>
+          <a
+            href='/catalogo'
+            class={cn(
+              buttonVariants({ variant: 'default', size: 'lg' }),
+              'w-full sm:w-auto rounded-full text-base font-semibold group relative overflow-hidden shadow-lg shadow-primary/20 transition-all duration-300 hover:shadow-primary/35 flex items-center justify-center'
+            )}
           >
-        </a>
-        <a
-          href='/suscripcion'
-          class={cn(
-            buttonVariants({ variant: 'outline', size: 'lg' }),
-            'w-full sm:w-auto rounded-full text-base font-semibold border-white/20 hover:bg-white/10 text-white transition-all duration-200 flex items-center justify-center'
-          )}
-        >
-          Cotizar pedido por Whatsapp
-        </a>
+            Ver el Catálogo
+            <svg
+              xmlns='http://www.w3.org/2000/svg'
+              width='20'
+              height='20'
+              viewBox='0 0 24 24'
+              fill='none'
+              stroke='currentColor'
+              stroke-width='2'
+              stroke-linecap='round'
+              stroke-linejoin='round'
+              class='ml-2 h-4 w-4 transition-transform duration-200 group-hover:translate-x-1'
+              ><line x1='5' y1='12' x2='19' y2='12'></line><polyline points='12 5 19 12 12 19'></polyline></svg
+            >
+          </a>
+          <a
+            href='/#calculadora'
+            class={cn(
+              buttonVariants({ variant: 'outline', size: 'lg' }),
+              'w-full sm:w-auto rounded-full text-base font-semibold border-white/20 hover:bg-white/10 text-white transition-all duration-200 flex items-center justify-center'
+            )}
+          >
+            Calcular mi pedido
+          </a>
+        </div>
+
+        {/* Stats micro-section */}
+        <div class='mt-12 grid w-full max-w-lg grid-cols-3 gap-8 border-t border-white/10 pt-8'>
+          <div>
+            <p class='text-primary font-serif text-3xl font-bold'>100%</p>
+            <p class='text-sm text-zinc-400'>Ingredientes Locales</p>
+          </div>
+          <div>
+            <p class='text-primary font-serif text-3xl font-bold'>15+</p>
+            <p class='text-sm text-zinc-400'>Años de tradición</p>
+          </div>
+          <div>
+            <p class='text-primary font-serif text-3xl font-bold'>Copán</p>
+            <p class='text-sm text-zinc-400'>Café de Altura</p>
+          </div>
+        </div>
       </div>
 
-      {/* Stats micro-section */}
-      <div class='mt-12 grid w-full max-w-lg grid-cols-3 gap-8 border-t border-white/10 pt-8'>
-        <div>
-          <p class='text-primary font-serif text-3xl font-bold'>100%</p>
-          <p class='text-sm text-zinc-400'>Ingredientes Locales</p>
-        </div>
-        <div>
-          <p class='text-primary font-serif text-3xl font-bold'>15+</p>
-          <p class='text-sm text-zinc-400'>Años de tradición</p>
-        </div>
-        <div>
-          <p class='text-primary font-serif text-3xl font-bold'>Copán</p>
-          <p class='text-sm text-zinc-400'>Café de Altura</p>
+      {/* Right Column: Logo/Image Space */}
+      <div class='hidden items-center justify-end lg:flex'>
+        <div
+          class='shadow-1xl flex aspect-square w-96 flex-col items-center justify-center rounded-full border border-white/20 bg-white/5 p-0 text-center backdrop-blur-sm transition-all hover:bg-white/10 lg:w-90'
+        >
+          <img src='/images/logo2.png' alt='logo' />
         </div>
       </div>
     </div>

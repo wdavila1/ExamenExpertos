@@ -1,14 +1,23 @@
 // Datos del menú — Café Premium Copán
 
+export type DetallesCafe = {
+  altura: string
+  notaCata: string
+  proceso: string
+}
+
 export type MenuItem = {
   name: string
   description: string
   price: string
+  oldPrice?: string
   image: string
-  category: 'cafe'
+  category: 'cafe' | 'lote-especial' | 'micro-lote'
   tueste: string
   proceso: string
+  detalles: DetallesCafe
   featured?: boolean
+  badgeText?: string
 }
 
 export type MenuCategory = {
@@ -19,7 +28,9 @@ export type MenuCategory = {
 
 export const menuCategories: MenuCategory[] = [
   { id: 'todos', label: 'Todos', emoji: '☕' },
-  { id: 'cafe', label: 'Café Premium', emoji: '✨' }
+  { id: 'cafe', label: 'Café Premium', emoji: '✨' },
+  { id: 'lote-especial', label: 'Lotes Especiales', emoji: '🏆' },
+  { id: 'micro-lote', label: 'Micro-lotes', emoji: '⭐' }
 ]
 
 export const menuItems: MenuItem[] = [
@@ -32,10 +43,14 @@ export const menuItems: MenuItem[] = [
     image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS6mCJOy90JuShhPymzF2IaNykEWtCfLUwArA&s',
     tueste: 'Medio',
     proceso: 'Lavado',
+    detalles: {
+      altura: '1300 metros',
+      notaCata: 'Chocolate, frutos rojos, toque cítrico',
+      proceso: 'Lavado'
+    },
     category: 'cafe',
     featured: true
   },
-
   {
     name: 'Café Excelso Copán',
     description: 'Café de altura con cuerpo medio y acidez brillante. Notas a nueces, caramelo y un final suave.',
@@ -44,10 +59,14 @@ export const menuItems: MenuItem[] = [
       'https://i5.walmartimages.cl/asr/b98a9fbf-6eb9-42e9-9ded-6089e81d8319.29aae8b7e9979584f56c743fdb9e8d3f.jpeg?null=&odnHeight=612&odnWidth=612&odnBg=FFFFFF',
     tueste: 'Oscuro',
     proceso: 'Lavado',
+    detalles: {
+      altura: '1200 metros',
+      notaCata: 'Nueces, caramelo, final suave',
+      proceso: 'Lavado'
+    },
     category: 'cafe',
     featured: true
   },
-
   {
     name: 'Cafe Organico de Copán',
     description: 'Café orgánico de origen hondureño con notas de frutas tropicales y un cuerpo suave.',
@@ -55,6 +74,11 @@ export const menuItems: MenuItem[] = [
     image: 'https://s9790.pcdn.co/wp-content/uploads/2019/04/cafe-a-domicilio-mycoffeebox-scaled.jpg',
     tueste: 'Medio',
     proceso: 'Miel',
+    detalles: {
+      altura: '1400 metros',
+      notaCata: 'Frutas tropicales, cuerpo suave',
+      proceso: 'Miel'
+    },
     category: 'cafe'
   },
   {
@@ -64,8 +88,12 @@ export const menuItems: MenuItem[] = [
     image: 'https://m.media-amazon.com/images/I/A13mq62qhjL._AC_UF894,1000_QL80_.jpg',
     tueste: 'Medio',
     proceso: 'Lavado',
-    category: 'cafe',
-    featured: true
+    detalles: {
+      altura: '1100 metros',
+      notaCata: 'Chocolate y caramelo',
+      proceso: 'Lavado'
+    },
+    category: 'cafe'
   },
   {
     name: 'Molienda Fina',
@@ -75,6 +103,11 @@ export const menuItems: MenuItem[] = [
       'https://static.wixstatic.com/media/45119e_163a011e71274f6dbdfcc1d544f8877e~mv2.png/v1/fill/w_980,h_980,al_c,q_90,usm_0.66_1.00_0.01,enc_avif,quality_auto/45119e_163a011e71274f6dbdfcc1d544f8877e~mv2.png',
     tueste: 'Oscuro',
     proceso: 'Natural',
+    detalles: {
+      altura: '1000 metros',
+      notaCata: 'Chocolate oscuro, cuerpo robusto',
+      proceso: 'Natural'
+    },
     category: 'cafe'
   },
   {
@@ -84,6 +117,11 @@ export const menuItems: MenuItem[] = [
     image: 'https://m.media-amazon.com/images/I/61Gy2riylnL._AC_UF894,1000_QL80_.jpg',
     tueste: 'Medio',
     proceso: 'Miel',
+    detalles: {
+      altura: '1250 metros',
+      notaCata: 'Frutos secos, aroma envolvente',
+      proceso: 'Miel'
+    },
     category: 'cafe'
   },
   {
@@ -93,6 +131,11 @@ export const menuItems: MenuItem[] = [
     image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRyaknIygcTTrC4R87FnSHh7iDUcw_gblNGhA&s',
     tueste: 'Claro',
     proceso: 'Lavado',
+    detalles: {
+      altura: '1500 metros',
+      notaCata: 'Florales delicadas, toques de bergamota',
+      proceso: 'Lavado'
+    },
     category: 'cafe',
     featured: true
   },
@@ -103,6 +146,11 @@ export const menuItems: MenuItem[] = [
     image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQrtFNZBrWKrT2QIJcXmVtEvFJYjMNR5z6MPQ&s',
     tueste: 'Oscuro',
     proceso: 'Lavado',
+    detalles: {
+      altura: '1150 metros',
+      notaCata: 'Intenso pero suave',
+      proceso: 'Lavado'
+    },
     category: 'cafe'
   },
   {
@@ -112,6 +160,11 @@ export const menuItems: MenuItem[] = [
     image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRyaknIygcTTrC4R87FnSHh7iDUcw_gblNGhA&s',
     tueste: 'Medio',
     proceso: 'Miel',
+    detalles: {
+      altura: '1200 metros',
+      notaCata: 'Mocha acaramelado, indulgencia pura',
+      proceso: 'Miel'
+    },
     category: 'cafe'
   },
   {
@@ -121,6 +174,11 @@ export const menuItems: MenuItem[] = [
     image: 'https://images.unsplash.com/photo-1461023058943-07fcbe16d735?w=500&h=500&fit=crop',
     tueste: 'Medio',
     proceso: 'Lavado',
+    detalles: {
+      altura: '1350 metros',
+      notaCata: 'Dulces y cremosas',
+      proceso: 'Lavado'
+    },
     category: 'cafe'
   },
   {
@@ -130,6 +188,11 @@ export const menuItems: MenuItem[] = [
     image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR2rxtBX3whk57dDRtRyMCaN0mrtiFiO-rPAg&s',
     tueste: 'Medio-Oscuro',
     proceso: 'Lavado',
+    detalles: {
+      altura: '1200 metros',
+      notaCata: 'Equilibrio perfecto',
+      proceso: 'Lavado'
+    },
     category: 'cafe'
   },
   {
@@ -139,6 +202,11 @@ export const menuItems: MenuItem[] = [
     image: 'https://images.unsplash.com/photo-1495521821757-a1efb6729352?w=500&h=500&fit=crop',
     tueste: 'Claro-Medio',
     proceso: 'Miel',
+    detalles: {
+      altura: '1100 metros',
+      notaCata: 'Dulce y sofisticado',
+      proceso: 'Miel'
+    },
     category: 'cafe'
   },
   {
@@ -148,6 +216,11 @@ export const menuItems: MenuItem[] = [
     image: 'https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=500&h=500&fit=crop',
     tueste: 'Oscuro',
     proceso: 'Natural',
+    detalles: {
+      altura: '1050 metros',
+      notaCata: 'Máxima intensidad',
+      proceso: 'Natural'
+    },
     category: 'cafe'
   },
   {
@@ -157,6 +230,11 @@ export const menuItems: MenuItem[] = [
     image: 'https://www.nescafe.com/mx/sites/default/files/2023-07/Cremoso%20vainilla%2001.jpg',
     tueste: 'Medio',
     proceso: 'Lavado',
+    detalles: {
+      altura: '1300 metros',
+      notaCata: 'Suave y elegante',
+      proceso: 'Lavado'
+    },
     category: 'cafe'
   },
   {
@@ -166,8 +244,78 @@ export const menuItems: MenuItem[] = [
     image: 'https://walmarthn.vtexassets.com/arquivos/ids/567310/56916_01.jpg?v=638709290493270000',
     tueste: 'Medio-Oscuro',
     proceso: 'Fermentado',
+    detalles: {
+      altura: '1600 metros',
+      notaCata: 'Complejidad aromática excepcional',
+      proceso: 'Fermentado'
+    },
     category: 'cafe',
     featured: true
+  },
+  {
+    name: 'Café Lote Especial Pacamara',
+    description:
+      'Café de variedad exótica Pacamara, con notas frutales intensas a durazno y mango, y una acidez jugosa.',
+    price: 'L. 220',
+    oldPrice: 'L. 280',
+    image: 'https://images.unsplash.com/photo-1447933601403-0c6688de566e?w=500&h=500&fit=crop',
+    tueste: 'Claro',
+    proceso: 'Natural',
+    detalles: {
+      altura: '1650 metros',
+      notaCata: 'Durazno, mango, acidez jugosa',
+      proceso: 'Natural'
+    },
+    category: 'lote-especial',
+    badgeText: 'EXCLUSIVO'
+  },
+  {
+    name: 'Café Micro-lote Finca La Esmeralda',
+    description: 'Edición limitada de micro-lote de altura. Notas florales a jazmín y miel con un cuerpo sedoso.',
+    price: 'L. 250',
+    oldPrice: 'L. 320',
+    image: 'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=500&h=500&fit=crop',
+    tueste: 'Medio',
+    proceso: 'Lavado',
+    detalles: {
+      altura: '1700 metros',
+      notaCata: 'Jazmín, miel, cuerpo sedoso',
+      proceso: 'Lavado'
+    },
+    category: 'micro-lote',
+    badgeText: 'COSECHA PREMIUM'
+  },
+  {
+    name: 'Café Lote Especial Geisha Copán',
+    description: 'Una de las variedades más codiciadas. Notas de té de limón, bergamota y flores de azahar.',
+    price: 'L. 300',
+    oldPrice: 'L. 380',
+    image: 'https://images.unsplash.com/photo-1507133750040-4a8f57021571?w=500&h=500&fit=crop',
+    tueste: 'Claro',
+    proceso: 'Lavado',
+    detalles: {
+      altura: '1800 metros',
+      notaCata: 'Té de limón, bergamota, azahar',
+      proceso: 'Lavado'
+    },
+    category: 'lote-especial',
+    badgeText: 'EXCLUSIVO'
+  },
+  {
+    name: 'Café Micro-lote El Cedral',
+    description: 'Producido en un pequeño micro-lote familiar. Notas balanceadas a caramelo, manzana y nuez.',
+    price: 'L. 210',
+    oldPrice: 'L. 260',
+    image: 'https://images.unsplash.com/photo-1497935586351-b67a49e012bf?w=500&h=500&fit=crop',
+    tueste: 'Medio-Oscuro',
+    proceso: 'Miel',
+    detalles: {
+      altura: '1550 metros',
+      notaCata: 'Caramelo, manzana, nuez',
+      proceso: 'Miel'
+    },
+    category: 'micro-lote',
+    badgeText: 'COSECHA PREMIUM'
   }
 ]
 

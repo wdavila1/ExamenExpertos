@@ -1,91 +1,159 @@
 ---
 import Layout from '@/layouts/Layout.astro'
 import PageHeader from '@/components/sections/PageHeader.astro'
-import ReservationForm from '@/components/sections/ReservationForm'
-import { restaurantInfo, businessHours } from '@/data/restaurant'
+import { Badge } from '@/components/ui/badge'
+import { Button } from '@/components/ui/button'
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card'
+import { CheckCircle2 } from 'lucide-react'
 
-const pageTitle = 'Reservar Mesa'
+const pageTitle = 'Suscripciones - Club de Café'
 const pageDescription =
-  'Reserva tu mesa en Café Premium Copán de forma rápida y sencilla. Disfruta de la mejor comida típica hondureña en un ambiente familiar.'
-const pageKeywords =
-  'reservar mesa, reservas restaurante, reservar baleadas, cena familiar, almuerzo ejecutivo, Tegucigalpa'
+  'Únete a nuestro Club de Café y recibe mensualmente las mejores selecciones y micro-lotes directamente en tu puerta.'
+const pageKeywords = 'suscripción café, club de café, café premium, envíos de café, café mensual'
 
-const schema = {
-  '@context': 'https://schema.org',
-  '@type': 'ReservationPage',
-  name: 'Reservaciones en Café Premium Copán',
-  description: pageDescription,
-  publisher: {
-    '@type': 'Restaurant',
-    name: 'Café Premium Copán',
-    telephone: restaurantInfo.phone
+const plans = [
+  {
+    name: 'Aficionado',
+    price: 'L. 350',
+    frequency: '/ mes',
+    description: 'Perfecto para quienes inician su viaje en el café de especialidad.',
+    features: [
+      '1 Bolsa (1 lb) de Café Premium Copán',
+      'Tueste a elección (Claro, Medio, Oscuro)',
+      'Envío gratis a nivel local',
+      'Guía de preparación básica'
+    ],
+    popular: false,
+    cta: 'Suscribirse'
+  },
+  {
+    name: 'Conocedor',
+    price: 'L. 650',
+    frequency: '/ mes',
+    description: 'Nuestra suscripción más popular para los amantes diarios del café.',
+    features: [
+      '2 Bolsas (1 lb) de Café Premium Copán',
+      'Acceso anticipado a nuevos lotes',
+      'Muestras de 100g de Lotes Especiales',
+      'Envío gratis a nivel nacional',
+      'Descuento del 10% en tienda'
+    ],
+    popular: true,
+    cta: 'Elegir Plan Conocedor'
+  },
+  {
+    name: 'Maestro Tostador',
+    price: 'L. 1,200',
+    frequency: '/ mes',
+    description: 'La experiencia definitiva con micro-lotes exclusivos.',
+    features: [
+      '3 Bolsas rotativas incluyendo Micro-lotes',
+      'Ediciones limitadas reservadas',
+      'Accesorios sorpresa de café',
+      'Envío gratis prioritario',
+      'Descuento del 20% en tienda',
+      'Invitación a catas virtuales'
+    ],
+    popular: false,
+    cta: 'Únete al Nivel Maestro'
   }
-}
+]
 ---
 
-<Layout title={pageTitle} description={pageDescription} keywords={pageKeywords} schema={schema}>
+<Layout title={pageTitle} description={pageDescription} keywords={pageKeywords}>
   <PageHeader
-    title='Reservaciones'
-    subtitle='Asegura tu mesa y vive una experiencia gastronómica inolvidable'
-    backgroundImage='/images/contact-us-01.webp'
+    title='Suscripción | Club de Café'
+    subtitle='Recibe mensualmente nuestra mejor selección de granos cultivados en Copán'
+    backgroundImage='https://images.unsplash.com/photo-1497935586351-b67a49e012bf?w=1920&q=80'
   />
 
-  <div class='mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-24 lg:px-8'>
-    <div class='grid grid-cols-1 items-start gap-12 lg:grid-cols-12'>
-      {/* Information Sidebar */}
-      <div class='bg-muted/40 border-border/60 space-y-8 rounded-2xl border p-6 sm:p-8 lg:col-span-4'>
+  <section class='mx-auto max-w-7xl px-4 py-24'>
+    <div class='mb-16 space-y-4 text-center'>
+      <h2 class='text-foreground font-serif text-3xl font-bold md:text-4xl'>Elige tu plan ideal</h2>
+      <p class='text-muted-foreground mx-auto max-w-2xl text-lg'>
+        Disfruta de la frescura inigualable de nuestro café. Lo tostamos especialmente para ti antes de enviarlo para
+        que disfrutes de cada nota de sabor.
+      </p>
+    </div>
+
+    <div class='grid items-center gap-8 md:grid-cols-3'>
+      {
+        plans.map(plan => (
+          <Card
+            className={`relative flex h-full flex-col transition-transform duration-300 hover:-translate-y-2 ${
+              plan.popular ? 'border-primary z-10 scale-105 shadow-xl' : 'border-border/50 shadow-sm'
+            }`}
+          >
+            {plan.popular && (
+              <div class='absolute -top-4 right-0 left-0 flex justify-center'>
+                <Badge className='bg-primary text-primary-foreground px-4 py-1 text-xs font-bold tracking-wide uppercase'>
+                  Más Popular
+                </Badge>
+              </div>
+            )}
+            <CardHeader className='pb-2 pt-8 text-center'>
+              <CardTitle className='font-serif text-2xl'>{plan.name}</CardTitle>
+              <CardDescription className='pt-2'>{plan.description}</CardDescription>
+            </CardHeader>
+            <CardContent className='flex-1 pb-6'>
+              <div class='mb-6 text-center'>
+                <span class='text-foreground text-4xl font-bold'>{plan.price}</span>
+                <span class='text-muted-foreground'>{plan.frequency}</span>
+              </div>
+              <ul class='space-y-3'>
+                {plan.features.map(feature => (
+                  <li class='text-muted-foreground flex items-start gap-3 text-sm'>
+                    <CheckCircle2 className='text-primary h-5 w-5 shrink-0' />
+                    <span>{feature}</span>
+                  </li>
+                ))}
+              </ul>
+            </CardContent>
+            <CardFooter>
+              <Button className='w-full rounded-full' variant={plan.popular ? 'default' : 'outline'}>
+                {plan.cta}
+              </Button>
+            </CardFooter>
+          </Card>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class='bg-primary/5 px-4 py-24'>
+    <div class='mx-auto max-w-4xl space-y-8 text-center'>
+      <span class='text-5xl drop-shadow-sm'>📦</span>
+      <h2 class='text-foreground font-serif text-3xl font-bold md:text-4xl'>¿Cómo funciona?</h2>
+
+      <div class='grid gap-8 pt-8 sm:grid-cols-3'>
         <div class='space-y-3'>
-          <h3 class='text-foreground font-serif text-xl font-bold'>Información Importante</h3>
-          <p class='text-muted-foreground text-sm leading-relaxed'>
-            Para garantizar el mejor servicio, por favor considera los siguientes puntos al realizar tu reserva:
-          </p>
-        </div>
-
-        <ul class='text-muted-foreground space-y-4 text-sm'>
-          <li class='flex gap-3'>
-            <span class='text-primary font-bold'>•</span>
-            <span>Las reservaciones deben hacerse con al menos <strong>2 horas de anticipación</strong>.</span>
-          </li>
-          <li class='flex gap-3'>
-            <span class='text-primary font-bold'>•</span>
-            <span
-              >Mantenemos tu mesa reservada por un máximo de <strong>15 minutos de tolerancia</strong> de la hora acordada.</span
-            >
-          </li>
-          <li class='flex gap-3'>
-            <span class='text-primary font-bold'>•</span>
-            <span
-              >Para grupos de más de 10 personas o eventos privados, por favor contáctanos directamente a nuestro
-              teléfono de atención o correo electrónico.</span
-            >
-          </li>
-        </ul>
-
-        <div class='border-border/80 space-y-4 border-t pt-6'>
-          <h4 class='text-foreground font-serif font-bold'>Horarios de Reservación</h4>
-          <div class='text-muted-foreground space-y-2 text-xs'>
-            {
-              businessHours.map(item => (
-                <div class='flex justify-between'>
-                  <span>{item.day}:</span>
-                  <span class='font-medium'>{item.isOpen ? item.hours : 'Cerrado'}</span>
-                </div>
-              ))
-            }
+          <div
+            class='bg-primary/20 text-primary mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full text-xl font-bold'
+          >
+            1
           </div>
+          <h3 class='text-lg font-bold'>Elige tu plan</h3>
+          <p class='text-muted-foreground text-sm'>Selecciona la cantidad de café que consumes al mes.</p>
         </div>
-
-        <div class='border-border/80 space-y-3 border-t pt-6'>
-          <h4 class='text-foreground font-serif font-bold'>¿Necesitas ayuda inmediata?</h4>
-          <p class='text-muted-foreground text-sm'>Llámanos o escríbenos directamente:</p>
-          <p class='text-primary text-sm font-semibold'>{restaurantInfo.phone} / {restaurantInfo.whatsapp}</p>
+        <div class='space-y-3'>
+          <div
+            class='bg-primary/20 text-primary mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full text-xl font-bold'
+          >
+            2
+          </div>
+          <h3 class='text-lg font-bold'>Tostamos para ti</h3>
+          <p class='text-muted-foreground text-sm'>Preparamos tu café garantizando su frescura absoluta.</p>
         </div>
-      </div>
-
-      {/* Reservation Form Component */}
-      <div class='lg:col-span-8'>
-        <ReservationForm client:load />
+        <div class='space-y-3'>
+          <div
+            class='bg-primary/20 text-primary mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full text-xl font-bold'
+          >
+            3
+          </div>
+          <h3 class='text-lg font-bold'>Recibe en casa</h3>
+          <p class='text-muted-foreground text-sm'>Te lo enviamos directamente a la puerta de tu hogar.</p>
+        </div>
       </div>
     </div>
-  </div>
+  </section>
 </Layout>

@@ -4,24 +4,19 @@ export const footerData = [
     href: '/'
   },
   {
-    title: 'Menú',
-    href: '/menu'
+    title: 'Catálogo',
+    href: '/catalogo'
   },
   {
-    title: 'Nosotros',
-    href: '/nosotros'
+    title: 'Ediciones Especiales',
+    href: '/especiales'
   },
   {
-    title: 'Reservaciones',
-    href: '/reservaciones'
-  },
-  {
-    title: 'Galería',
-    href: '/galeria'
+    title: 'Suscripción cafetalera',
+    href: '/suscripcion'
   },
   {
     title: 'Contacto',
     href: '/contacto'
   }
 ]
-

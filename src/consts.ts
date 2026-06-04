@@ -40,14 +40,14 @@ export const SITE_METADATA = {
   locale: 'es_HN',
   icons: {
     icon: [
-      { url: '/favicon/SabValle.ico', sizes: '48x48' },
-      { url: '/favicon/SabValle.ico', sizes: '32x32', type: 'image/png' },
-      { url: '/favicon/SabValle.ico', sizes: '16x16', type: 'image/png' },
-      { url: '/favicon/SabValle.ico', sizes: '192x192', type: 'image/png' },
-      { url: '/favicon/SabValle.ico', sizes: '512x512', type: 'image/png' }
+      { url: '/favicon/logo.ico', sizes: '48x48' },
+      { url: '/favicon/logo.ico', sizes: '32x32', type: 'image/png' },
+      { url: '/favicon/logo.ico', sizes: '16x16', type: 'image/png' },
+      { url: '/favicon/logo.ico', sizes: '192x192', type: 'image/png' },
+      { url: '/favicon/logo.ico', sizes: '512x512', type: 'image/png' }
     ],
-    apple: [{ url: '/favicon/SabValle.ico', sizes: '180x180' }],
-    shortcut: [{ url: '/favicon/SabValle.ico' }]
+    apple: [{ url: '/favicon/logo.ico', sizes: '180x180' }],
+    shortcut: [{ url: '/favicon/logo.ico' }]
   },
   openGraph: {
     type: 'website',

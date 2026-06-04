@@ -42,20 +42,29 @@ const seoProps = Astro.props as Props
           return 'dark'
         }
 
-        const applyTheme = () => {
+        const applyTheme = (doc) => {
+          const target = doc || document
           const theme = getTheme()
           if (theme === 'dark') {
-            document.documentElement.classList.add('dark')
+            target.documentElement.classList.add('dark')
           } else {
-            document.documentElement.classList.remove('dark')
+            target.documentElement.classList.remove('dark')
           }
         }
 
         // Apply theme immediately on initial load
         applyTheme()
 
-        // Re-apply theme on Astro page transitions
-        document.addEventListener('astro:page-load', applyTheme)
+        // Apply to incoming page BEFORE it's swapped in (prevents white flash)
+        document.addEventListener('astro:before-swap', (e) => {
+          applyTheme(e.newDocument)
+        })
+
+        // Re-apply after swap as a safety net
+        document.addEventListener('astro:after-swap', () => applyTheme())
+
+        // Re-apply on full page load
+        document.addEventListener('astro:page-load', () => applyTheme())
       })()
     </script>
     <style>
@@ -71,7 +80,7 @@ const seoProps = Astro.props as Props
     <div class='flex flex-col'>
       <Header navigationData={navigationData} client:load />
 
-      <main class='flex flex-col pt-17.5 *:scroll-mt-16'><slot /></main>
+      <main class='flex flex-col pt-24 *:scroll-mt-24'><slot /></main>
 
       <Footer client:load />
     </div>

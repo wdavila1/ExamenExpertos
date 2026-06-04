@@ -1,33 +1,42 @@
 'use client'
 
 import { useState } from 'react'
-import { Card, CardContent, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
-import { Separator } from '@/components/ui/separator'
-import { menuCategories, menuItems } from '@/data/menu'
+import { menuItems } from '@/data/menu'
 import type { MenuItem } from '@/data/menu'
 import { cn } from '@/lib/utils'
+import { CoffeeCard } from './CoffeeCard'
+
+const tuesteCategories = [
+  { id: 'todos', label: 'Todos los Tuestes', emoji: '☕' },
+  { id: 'Claro', label: 'Tueste Claro', emoji: '' },
+  { id: 'Medio', label: 'Tueste Medio', emoji: '' },
+  { id: 'Oscuro', label: 'Tueste Oscuro', emoji: '' }
+]
 
 const MenuCategories = () => {
-  const [activeCategory, setActiveCategory] = useState<string>('todos')
+  const [activeTueste, setActiveTueste] = useState<string>('todos')
+
+  // Base items for the catalog (exclude special editions)
+  const baseItems = menuItems.filter(item => item.category === 'cafe')
 
   // Filter items based on active tab
   const filteredItems =
-    activeCategory === 'todos' ? menuItems : menuItems.filter(item => item.category === activeCategory)
+    activeTueste === 'todos' ? baseItems : baseItems.filter(item => item.tueste.includes(activeTueste))
 
-  console.log('Active Category:', activeCategory)
-  console.log('Filtered Items:', filteredItems.length)
+  const firstBatch = filteredItems.slice(0, 8)
+  const secondBatch = filteredItems.slice(8)
 
   return (
     <div className='w-full space-y-12'>
-      {/* Categories Buttons/Tabs */}
+      {/* Tueste Buttons/Tabs */}
       <div className='border-border/60 flex flex-wrap justify-center gap-3 border-b pb-4 md:gap-4'>
-        {menuCategories.map(category => {
-          const isActive = activeCategory === category.id
+        {tuesteCategories.map(category => {
+          const isActive = activeTueste === category.id
           return (
             <Button
               key={category.id}
-              onClick={() => setActiveCategory(category.id)}
+              onClick={() => setActiveTueste(category.id)}
               variant={isActive ? 'default' : 'outline'}
               className={cn(
                 'h-auto rounded-full px-5 py-2 text-base font-medium transition-all duration-300',
@@ -45,53 +54,53 @@ const MenuCategories = () => {
 
       {/* Grid of Menu Items */}
       {filteredItems.length === 0 ? (
-        <div className='text-muted-foreground py-12 text-center'>No se encontraron platillos en esta categoría.</div>
+        <div className='text-muted-foreground py-12 text-center'>No se encontraron cafés con este tueste.</div>
       ) : (
         <div className='animate-fade-in grid gap-8 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'>
-          {filteredItems.map((dish: MenuItem, index: number) => (
-            <Card
+          {firstBatch.map((dish: MenuItem, index: number) => (
+            <CoffeeCard
               key={index}
-              className='hover:border-primary border-border/80 group bg-card flex h-full flex-col overflow-hidden rounded-2xl border shadow-xs transition-all duration-300 hover:shadow-md'
-            >
-              {/* Dish Image */}
-              <div className='bg-muted relative flex aspect-video items-center justify-center overflow-hidden'>
-                <img
-                  src={dish.image}
-                  alt={dish.name}
-                  className='h-full w-full object-cover transition-transform duration-500 group-hover:scale-105'
-                  loading='lazy'
-                />
-                <span className='bg-primary text-primary-foreground absolute top-3 right-3 rounded-full px-3 py-1 text-sm font-semibold shadow-md'>
-                  {dish.price}
-                </span>
-                {dish.featured && (
-                  <span className='bg-accent text-accent-foreground absolute top-3 left-3 rounded-full px-2.5 py-0.5 text-xs font-bold tracking-wider uppercase shadow-xs'>
-                    Especialidad
-                  </span>
-                )}
-              </div>
+              nombre={dish.name}
+              tueste={dish.tueste}
+              precio={dish.price}
+              precioAnterior={dish.oldPrice}
+              detalles={dish.detalles}
+              imgUrl={dish.image}
+              featured={dish.featured}
+              badgeText={dish.badgeText}
+            />
+          ))}
 
-              {/* Card Body */}
-              <CardContent className='flex flex-1 flex-col justify-between gap-4 p-5'>
-                <div className='space-y-2'>
-                  <div className='flex items-start justify-between gap-2'>
-                    <CardTitle className='text-foreground group-hover:text-primary text-lg font-bold tracking-tight transition-colors duration-200'>
-                      {dish.name}
-                    </CardTitle>
-                  </div>
-                  <div className='flex flex-wrap gap-2'>
-                    <p className='text-primary/80 bg-primary/10 rounded px-2 py-1 text-xs font-semibold tracking-wider uppercase'>
-                      {dish.tueste}
-                    </p>
-                    <p className='text-primary/80 bg-primary/10 rounded px-2 py-1 text-xs font-semibold tracking-wider uppercase'>
-                      {dish.proceso}
-                    </p>
-                  </div>
-                  <Separator className='bg-border/60' />
-                  <p className='text-muted-foreground line-clamp-3 text-sm leading-relaxed'>{dish.description}</p>
-                </div>
-              </CardContent>
-            </Card>
+          {/* Promotional Section */}
+          <div className='border-primary/20 bg-primary/5 relative col-span-full my-4 flex flex-col items-center justify-center gap-5 overflow-hidden rounded-3xl border p-8 text-center shadow-sm md:p-12'>
+            <span className='animate-bounce text-5xl drop-shadow-md'>☕</span>
+            <div className='relative z-10 max-w-2xl space-y-3'>
+              <h3 className='text-foreground font-serif text-2xl font-bold md:text-3xl'>¿Buscas algo más exclusivo?</h3>
+              <p className='text-muted-foreground text-lg text-balance md:text-xl'>
+                Descubre nuestros micro-lotes y cosechas premium, seleccionados de las mejores fincas de Copán.
+              </p>
+            </div>
+            <Button
+              asChild
+              size='lg'
+              className='relative z-10 mt-2 scale-105 rounded-full px-8 font-semibold shadow-md transition-transform hover:scale-110'
+            >
+              <a href='/especiales'>Ver Ediciones Especiales</a>
+            </Button>
+          </div>
+
+          {secondBatch.map((dish: MenuItem, index: number) => (
+            <CoffeeCard
+              key={`second-${index}`}
+              nombre={dish.name}
+              tueste={dish.tueste}
+              precio={dish.price}
+              precioAnterior={dish.oldPrice}
+              detalles={dish.detalles}
+              imgUrl={dish.image}
+              featured={dish.featured}
+              badgeText={dish.badgeText}
+            />
           ))}
         </div>
       )}

@@ -6,17 +6,21 @@ import type { MenuItem } from '@/data/menu'
 
 const FeaturedDishes = ({ dishes }: { dishes: MenuItem[] }) => {
   return (
-    <section id='popular-dishes' className='py-16 sm:py-24 bg-muted/40'>
+    <section id='popular-dishes' className='bg-muted/40 py-16 sm:py-24'>
       <div className='mx-auto max-w-7xl px-4 sm:px-6 lg:px-8'>
         <div className='mx-auto mb-12 flex max-w-2xl flex-col items-center justify-center space-y-4 text-center sm:mb-16'>
-          <Badge variant='outline' className='text-sm font-medium border-primary/30 text-primary bg-primary/5 px-3 py-1 rounded-full'>
+          <Badge
+            variant='outline'
+            className='border-primary/30 text-primary bg-primary/5 rounded-full px-3 py-1 text-sm font-medium'
+          >
             Nuestras Especialidades
           </Badge>
-          <h2 className='text-3xl font-bold font-serif md:text-4xl text-foreground tracking-tight'>
-            Platillos Más Populares
+          <h2 className='text-foreground font-serif text-3xl font-bold tracking-tight md:text-4xl'>
+            Cafés Más Populares
           </h2>
-          <p className='text-muted-foreground text-lg md:text-xl text-balance'>
-            Descubre los sabores favoritos de nuestros clientes, preparados con ingredientes frescos de la más alta calidad y el sazón catracho tradicional.
+          <p className='text-muted-foreground text-lg text-balance md:text-xl'>
+            Descubre las variedades favoritas de nuestros clientes, cultivadas en las tierras altas de Copán y tostadas
+            artesanalmente para resaltar notas aromáticas únicas y un sabor excepcional en cada taza.
           </p>
         </div>
 
@@ -25,31 +29,29 @@ const FeaturedDishes = ({ dishes }: { dishes: MenuItem[] }) => {
           {dishes.map((dish, index) => (
             <Card
               key={index}
-              className='hover:border-primary border border-border/80 overflow-hidden rounded-2xl shadow-xs hover:shadow-md transition-all duration-300 flex flex-col h-full group bg-card'
+              className='hover:border-primary border-border/80 group bg-card flex h-full flex-col overflow-hidden rounded-2xl border shadow-xs transition-all duration-300 hover:shadow-md'
             >
-              <div className='bg-muted relative overflow-hidden aspect-video sm:aspect-square flex items-center justify-center'>
-                <img 
-                  src={dish.image} 
-                  alt={dish.name} 
-                  className='object-cover h-full w-full group-hover:scale-105 transition-transform duration-500' 
-                  loading='lazy' 
+              <div className='bg-muted relative flex aspect-video items-center justify-center overflow-hidden sm:aspect-square'>
+                <img
+                  src={dish.image}
+                  alt={dish.name}
+                  className='h-full w-full object-cover transition-transform duration-500 group-hover:scale-105'
+                  loading='lazy'
                 />
-                <span className='absolute top-3 right-3 bg-primary text-primary-foreground font-semibold px-3 py-1 text-sm rounded-full shadow-md'>
+                <span className='bg-primary text-primary-foreground absolute top-3 right-3 rounded-full px-3 py-1 text-sm font-semibold shadow-md'>
                   {dish.price}
                 </span>
               </div>
-              <CardContent className='p-6 flex flex-col flex-1 justify-between gap-4'>
+              <CardContent className='flex flex-1 flex-col justify-between gap-4 p-6'>
                 <div className='space-y-2'>
-                  <CardTitle className='text-xl font-bold tracking-tight text-foreground group-hover:text-primary transition-colors duration-200'>
+                  <CardTitle className='text-foreground group-hover:text-primary text-xl font-bold tracking-tight transition-colors duration-200'>
                     {dish.name}
                   </CardTitle>
-                  <p className='text-sm font-semibold tracking-wider text-primary/80 uppercase'>
+                  <p className='text-primary/80 text-sm font-semibold tracking-wider uppercase'>
                     {dish.category.replace('-', ' ')}
                   </p>
                   <Separator className='bg-border/60' />
-                  <p className='text-muted-foreground text-sm leading-relaxed line-clamp-3'>
-                    {dish.description}
-                  </p>
+                  <p className='text-muted-foreground line-clamp-3 text-sm leading-relaxed'>{dish.description}</p>
                 </div>
               </CardContent>
             </Card>
@@ -59,7 +61,7 @@ const FeaturedDishes = ({ dishes }: { dishes: MenuItem[] }) => {
         {/* Call to Action to view menu */}
         <div className='mt-16 text-center'>
           <Button asChild size='lg' className='rounded-full px-8 font-semibold shadow-md'>
-            <a href='/menu'>Explorar el Menú Completo</a>
+            <a href='/catalogo'>Explorar el Catálogo Completo</a>
           </Button>
         </div>
       </div>

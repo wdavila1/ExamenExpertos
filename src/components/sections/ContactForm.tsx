@@ -64,14 +64,15 @@ const ContactForm = () => {
 
   if (isSubmitted) {
     return (
-      <div className='flex flex-col items-center justify-center text-center p-8 bg-card border border-border/80 rounded-2xl shadow-md space-y-6 animate-fade-in'>
+      <div className='bg-card border-border/80 animate-fade-in flex flex-col items-center justify-center space-y-6 rounded-2xl border p-8 text-center shadow-md'>
         <div className='flex h-16 w-16 items-center justify-center rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-500'>
           <CheckCircle2 className='h-10 w-10' />
         </div>
         <div className='space-y-2'>
-          <h3 className='text-2xl font-bold text-foreground font-serif'>¡Mensaje Enviado!</h3>
+          <h3 className='text-foreground font-serif text-2xl font-bold'>¡Mensaje Enviado!</h3>
           <p className='text-muted-foreground'>
-            Gracias por ponerte en contacto con nosotros. Hemos recibido tu mensaje y nuestro equipo te responderá en la brevedad posible a <span className='font-semibold text-primary'>{formData.email}</span>.
+            Gracias por ponerte en contacto con nosotros. Hemos recibido tu mensaje y nuestro equipo te responderá en la
+            brevedad posible a <span className='text-primary font-semibold'>{formData.email}</span>.
           </p>
         </div>
 
@@ -83,11 +84,15 @@ const ContactForm = () => {
   }
 
   return (
-    <form onSubmit={handleSubmit} className='bg-card border border-border/80 p-6 sm:p-8 rounded-2xl shadow-sm space-y-6'>
+    <form
+      onSubmit={handleSubmit}
+      className='bg-card border-border/80 space-y-6 rounded-2xl border p-6 shadow-sm sm:p-8'
+    >
       <div className='space-y-2'>
-        <h3 className='text-2xl font-bold font-serif text-foreground'>Envíanos un Mensaje</h3>
+        <h3 className='text-foreground font-serif text-2xl font-bold'>Envíanos un Mensaje</h3>
         <p className='text-muted-foreground text-sm'>
-          ¿Tienes sugerencias, preguntas o deseas planear un evento privado en nuestro local? Escríbenos y nos pondremos en contacto contigo.
+          ¿Tienes sugerencias, preguntas o deseas planear un evento privado en nuestro local? Escríbenos y nos pondremos
+          en contacto contigo.
         </p>
       </div>
 
@@ -95,7 +100,7 @@ const ContactForm = () => {
         {/* Nombre */}
         <div className='space-y-2'>
           <Label htmlFor='name' className='flex items-center gap-1.5'>
-            <User className='h-4 w-4 text-muted-foreground' /> Nombre Completo
+            <User className='text-muted-foreground h-4 w-4' /> Nombre Completo
           </Label>
           <Input
             id='name'
@@ -106,13 +111,13 @@ const ContactForm = () => {
             onChange={handleChange}
             className={errors.name ? 'border-destructive focus-visible:ring-destructive/50' : ''}
           />
-          {errors.name && <p className='text-xs text-destructive font-medium'>{errors.name}</p>}
+          {errors.name && <p className='text-destructive text-xs font-medium'>{errors.name}</p>}
         </div>
 
         {/* Correo */}
         <div className='space-y-2'>
           <Label htmlFor='email' className='flex items-center gap-1.5'>
-            <Mail className='h-4 w-4 text-muted-foreground' /> Correo Electrónico
+            <Mail className='text-muted-foreground h-4 w-4' /> Correo Electrónico
           </Label>
           <Input
             id='email'
@@ -123,24 +128,24 @@ const ContactForm = () => {
             onChange={handleChange}
             className={errors.email ? 'border-destructive focus-visible:ring-destructive/50' : ''}
           />
-          {errors.email && <p className='text-xs text-destructive font-medium'>{errors.email}</p>}
+          {errors.email && <p className='text-destructive text-xs font-medium'>{errors.email}</p>}
         </div>
 
         {/* Asunto */}
         <div className='space-y-2'>
           <Label htmlFor='subject' className='flex items-center gap-1.5'>
-            <FileText className='h-4 w-4 text-muted-foreground' /> Asunto
+            <FileText className='text-muted-foreground h-4 w-4' /> Asunto
           </Label>
           <Input
             id='subject'
             name='subject'
             type='text'
-            placeholder='Ej. Consulta sobre evento privado'
+            placeholder='Ej. Consulta sobre nuestro café'
             value={formData.subject}
             onChange={handleChange}
             className={errors.subject ? 'border-destructive focus-visible:ring-destructive/50' : ''}
           />
-          {errors.subject && <p className='text-xs text-destructive font-medium'>{errors.subject}</p>}
+          {errors.subject && <p className='text-destructive text-xs font-medium'>{errors.subject}</p>}
         </div>
 
         {/* Mensaje */}
@@ -155,20 +160,29 @@ const ContactForm = () => {
             rows={5}
             className={`resize-none ${errors.message ? 'border-destructive focus-visible:ring-destructive/50' : ''}`}
           />
-          {errors.message && <p className='text-xs text-destructive font-medium'>{errors.message}</p>}
+          {errors.message && <p className='text-destructive text-xs font-medium'>{errors.message}</p>}
         </div>
       </div>
 
       <Button
         type='submit'
-        className='w-full rounded-full h-11 font-semibold text-base shadow-sm relative overflow-hidden transition-all duration-300'
+        className='relative h-11 w-full overflow-hidden rounded-full text-base font-semibold shadow-sm transition-all duration-300'
         disabled={isSubmitting}
       >
         {isSubmitting ? (
-          <span className='flex items-center gap-2 justify-center'>
-            <svg className='animate-spin h-5 w-5 text-white' xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24'>
+          <span className='flex items-center justify-center gap-2'>
+            <svg
+              className='h-5 w-5 animate-spin text-white'
+              xmlns='http://www.w3.org/2000/svg'
+              fill='none'
+              viewBox='0 0 24 24'
+            >
               <circle className='opacity-25' cx='12' cy='12' r='10' stroke='currentColor' strokeWidth='4'></circle>
-              <path className='opacity-75' fill='currentColor' d='M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z'></path>
+              <path
+                className='opacity-75'
+                fill='currentColor'
+                d='M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z'
+              ></path>
             </svg>
             Enviando...
           </span>

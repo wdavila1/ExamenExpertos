@@ -7,7 +7,7 @@ export const restaurantInfo = {
     'Restaurante de comida típica hondureña donde cada platillo cuenta la historia de nuestra tierra. Ingredientes frescos, recetas tradicionales y un ambiente cálido que te hará sentir como en casa.',
   phone: '+504 2662-3333',
   whatsapp: '+504 9999-8888',
-  email: 'info@saboresdelvalle.hn',
+  email: 'info@cafecopan.hn',
   address: 'Barrio el Centro, Santa Rosa de Copan, Honduras',
   mapPlaceholder: 'INSERTAR_ENLACE_GOOGLE_MAPS_AQUI',
   socialMedia: {

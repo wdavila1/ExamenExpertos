@@ -1,42 +1,41 @@
 ---
 import Layout from '@/layouts/Layout.astro'
 import HeroSection from '@/components/sections/HeroSection.astro'
+import BrandStory from '@/components/sections/BrandStory.astro'
 import FeaturedDishes from '@/components/sections/FeaturedDishes'
-import BusinessHours from '@/components/sections/BusinessHours.astro'
-import Testimonials from '@/components/blocks/testimonials-section/testimonials-section'
+import ShippingCalculator from '@/components/sections/ShippingCalculator'
+import DistributorRequirements from '@/components/sections/DistributorRequirements.astro'
 
 import { featuredDishes } from '@/data/menu'
-import { testimonials } from '@/data/testimonials'
 
 // Page-specific SEO configuration
 const pageTitle = 'Inicio'
 const pageDescription =
-  'Bienvenidos a Café Premium Copán, el auténtico rincón gastronómico hondureño en Tegucigalpa. Disfruta de deliciosas baleadas, pollo chuco, sopa de caracol y más.'
-const pageKeywords =
-  'restaurante hondureño, comida típica catracha, baleadas, pollo chuco, Tegucigalpa, Café Premium Copán'
+  'Bienvenidos a Café Premium Copán. Café de especialidad hondureño cultivado en las tierras altas de Copán. Descubre nuestras variedades premium, micro-lotes y cosechas exclusivas.'
+const pageKeywords = 'café hondureño, café de especialidad, café premium Copán, café arábica Honduras, micro-lotes café'
 
-// Structured data for Restaurant
+// Structured data for LocalBusiness
 const schema = {
   '@context': 'https://schema.org',
-  '@type': 'Restaurant',
+  '@type': 'LocalBusiness',
   name: 'Café Premium Copán',
   description: pageDescription,
   image: 'https://saboresdelvalle.hn/images/about-us.webp',
-  telephone: '+504 2222-3333',
+  telephone: '+504 2662-1234',
   address: {
     '@type': 'PostalAddress',
-    streetAddress: 'Boulevard Morazán',
-    addressLocality: 'Tegucigalpa',
-    addressRegion: 'Francisco Morazán',
-    postalCode: '11101',
+    streetAddress: 'Barrio el Centro',
+    addressLocality: 'Santa Rosa de Copán',
+    addressRegion: 'Copán',
+    postalCode: '41101',
     addressCountry: 'HN'
   },
   openingHoursSpecification: [
     {
       '@type': 'OpeningHoursSpecification',
-      dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
+      dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
       opens: '08:00',
-      closes: '21:00'
+      closes: '18:00'
     }
   ]
 }
@@ -44,7 +43,8 @@ const schema = {
 
 <Layout title={pageTitle} description={pageDescription} keywords={pageKeywords} schema={schema}>
   <HeroSection />
+  <BrandStory />
   <FeaturedDishes dishes={featuredDishes} client:load />
-  <BusinessHours />
-  <Testimonials testimonials={testimonials} client:load />
+  <ShippingCalculator client:load />
+  <DistributorRequirements />
 </Layout>

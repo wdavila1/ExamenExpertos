@@ -1,0 +1,86 @@
+---
+/**
+ * BrandStory — Short history section for Café Premium Copán.
+ * Designed to sit right after the Hero.
+ */
+---
+
+<section class='relative overflow-hidden py-20 sm:py-28'>
+  <!-- Soft ambient blurs -->
+  <div class='absolute -left-24 top-12 h-72 w-72 rounded-full bg-primary/5 blur-3xl'></div>
+  <div class='absolute -right-24 bottom-12 h-72 w-72 rounded-full bg-secondary/5 blur-3xl'></div>
+
+  <div class='relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8'>
+    <div class='grid items-center gap-14 lg:grid-cols-2'>
+
+      <!-- Image column -->
+      <div class='relative'>
+        <div class='aspect-[4/3] overflow-hidden rounded-2xl shadow-lg'>
+          <img
+            src='https://images.unsplash.com/photo-1611854779393-1b2da9d400fe?auto=format&fit=crop&w=800&q=80'
+            alt='Fincas cafeteras en las montañas de Copán, Honduras'
+            class='h-full w-full object-cover'
+            loading='lazy'
+          />
+        </div>
+        <!-- Accent card floating -->
+        <div
+          class='absolute -bottom-6 -right-4 rounded-xl border border-border/60 bg-card px-5 py-4 shadow-md sm:-right-8'
+        >
+          <p class='font-serif text-2xl font-bold text-primary'>+25</p>
+          <p class='text-xs font-medium text-muted-foreground'>años de tradición cafetalera</p>
+        </div>
+      </div>
+
+      <!-- Text column -->
+      <div class='space-y-6'>
+        <div
+          class='inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/5 px-3 py-1 text-sm font-medium text-primary'
+        >
+          Nuestra Historia
+        </div>
+
+        <h2 class='font-serif text-3xl font-bold tracking-tight text-foreground md:text-4xl'>
+          Desde las tierras altas de Copán hasta tu taza
+        </h2>
+
+        <div class='space-y-4 text-base leading-relaxed text-muted-foreground'>
+          <p>
+            Café Premium Copán nace de la pasión por el café de especialidad hondureño. En las montañas occidentales de
+            Honduras, donde la altitud, el suelo volcánico y el clima templado se combinan para crear condiciones
+            excepcionales, nuestras fincas <strong class='text-foreground'>El Robledal</strong>,
+            <strong class='text-foreground'>Las Nubes</strong> y
+            <strong class='text-foreground'>Monte Verde</strong> cultivan granos con perfiles de sabor únicos e irrepetibles.
+          </p>
+          <p>
+            Cada cosecha es seleccionada a mano, procesada con técnicas de fermentación controlada y tostada
+            artesanalmente en pequeños lotes para preservar las notas de chocolate, cítricos y caramelo que
+            caracterizan al mejor café copaneco.
+          </p>
+          <p>
+            Más que una marca, somos un puente entre el caficultor y el conocedor. Trabajamos directamente con
+            las familias productoras para garantizar comercio justo, trazabilidad completa y una calidad
+            consistente que honra la tradición cafetalera de nuestra tierra.
+          </p>
+        </div>
+
+        <!-- Stats row -->
+        <div class='grid grid-cols-3 gap-6 border-t border-border pt-6'>
+          <div>
+            <p class='font-serif text-2xl font-bold text-foreground'>1,400m</p>
+            <p class='text-xs text-muted-foreground'>altitud de cultivo</p>
+          </div>
+          <div>
+            <p class='font-serif text-2xl font-bold text-foreground'>3</p>
+            <p class='text-xs text-muted-foreground'>fincas de origen</p>
+          </div>
+          <div>
+            <p class='font-serif text-2xl font-bold text-foreground'>100%</p>
+            <p class='text-xs text-muted-foreground'>arábica de altura</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
